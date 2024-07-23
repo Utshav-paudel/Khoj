@@ -1,0 +1,55 @@
+*main{
+  margin: 0px;
+  padding: 0px;
+}
+
+body{
+  background-image: url("background_jatra.png");
+  background-size: 100%;
+}
+
+.main_div{
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+}
+
+.form_container{
+  background-color:  rgba(0,0,0,0.5);
+  width: max-content;
+  width: max-content;
+  padding-left: 10px;
+  padding-right: 10px;
+  box-shadow: 5px 5px 15px;
+
+}
+
+.form_container label{
+  color: rgb(253, 252, 252);
+}
+
+.heading{
+  color: rgb(253, 252, 252);
+}
+
+.textarea{
+  width: 500px;
+  height: 300px;
+  resize: none;
+  border: solid;
+  border-radius: 5px;
+  border-color: goldenrod;
+  padding: 3px;
+  margin-bottom: 20px;
+}
+
+.form_container input{
+  padding: 5px;
+  border: solid;
+  border-radius: 5px;
+  border-color: goldenrod;
+  margin-bottom: 20px;
+}
+
