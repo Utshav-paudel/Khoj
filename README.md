@@ -1,1 +1,3 @@
-# Local Event Finder app
+# Khoj
+
+Never Miss an event with Khoj
