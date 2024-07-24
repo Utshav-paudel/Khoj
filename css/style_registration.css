@@ -4,7 +4,7 @@
 }
 
 body{
-  background-image: url("background_jatra.png");
+  background-image: url("assets\images/background_jatra.png");
   background-size: 100%;
 }
 
@@ -36,7 +36,7 @@ body{
 
 .textarea{
   width: 500px;
-  height: 300px;
+  height: 250px;
   resize: none;
   border: solid;
   border-radius: 5px;
@@ -51,5 +51,12 @@ body{
   border-radius: 5px;
   border-color: goldenrod;
   margin-bottom: 20px;
+}
+
+input[type= "submit"]{
+  height: 30;
+  width: 90;
+  align-items: center;
+  margin-left: 200px;
 }
 
