@@ -4,7 +4,7 @@
 }
 
 body{
-  background-image: url("assets/images/background_jatra.png");
+  background: url("assets/images/background_jatra.png");
   background-size: 100%;
 }
 
@@ -20,6 +20,7 @@ body{
   background-color:  rgba(0,0,0,0.5);
   width: max-content;
   width: max-content;
+  border-radius: 20px;
   padding-left: 10px;
   padding-right: 10px;
   box-shadow: 5px 5px 15px;

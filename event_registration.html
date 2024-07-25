@@ -13,7 +13,7 @@
 
         <h2 class = "heading">Register your event now !!</h2>
 
-        <form>
+        <form method = "post" action= "handlers/event_register.php">
 
           <label for="event_name">Name of events</label><br>
           <input type="text" id = "event_name" name = "event_name" placeholder= "Enter event name"><br>
@@ -30,9 +30,7 @@
           <label for="event_loaction">Location</label><br>
           <input type="text", id = "event_loaction", name = "event_loaction" placeholder= "event loaction"><br>
 
-          <input type="submit" value = "Register" class = "submit">
-
-          <a href="assets/images/background_jatra.png" target= "_blank"></a>
+          <input type="submit" value = "Register">
         
         </form>
       </div>
