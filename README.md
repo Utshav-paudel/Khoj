@@ -1,3 +1,3 @@
 # Khoj
 
-Never Miss an event with Khoj
+Khoj is a webpapp that will find event for you nearby your location
