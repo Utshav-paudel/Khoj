@@ -1,40 +1,42 @@
 <html>
-  <head>
+
+<head>
     <title>
-      Event Registration
+        Event Registration
     </title>
 
     <link rel="stylesheet" href="css/style_registration.css">
-  </head>
-  <body>
-    <div class = "main_div">
+</head>
 
-      <div class = "form_container">
+<body>
+    <main>
+    <div class="form_container">
 
-        <h2 class = "heading">Register your event now !!</h2>
+        <h2 class="heading">Event Registration</h2><br>
 
-        <form method = "post" action= "handlers/event_register.php">
+        <form method="post" action="handlers/event_register.php">
 
-          <label for="event_name">Name of events</label><br>
-          <input type="text" id = "event_name" name = "event_name" placeholder= "Enter event name"><br>
-  
-          <label for="event_description">Event description</label><br>
-          <textarea id = "event_description" class = "textarea" name = "event_description" placeholder= "Describe your event...."></textarea><br>
-  
-          <label for="start_date">Start date</label><br>
-          <input type="text" id = "start_date" name = "start_date" placeholder= "starting date"><br>
-  
-          <label for="end_date">End date</label><br>
-          <input type="text", id = "end_date", name = "end_date" placeholder= "ending date"><br>
-  
-          <label for="event_loaction">Location</label><br>
-          <input type="text", id = "event_loaction", name = "event_loaction" placeholder= "event loaction"><br>
+            <label for="event_name">Name Of Event :</label>
+            <input type="text" id="event_name" name="event_name" placeholder="Enter event name"><br><br>
 
-          <input type="submit" value = "Register">
-        
+            <label for="event_description">Event Description</label><br><br>
+            <textarea id="event_description" class="textarea" name="event_description"
+                placeholder="Describe your event...."></textarea><br>
+
+            <label for="start_date">Start Date</label><br><br>
+            <input type="text" id="start_date" name="start_date" placeholder="Start Date"><br>
+
+            <label for="end_date">End date</label><br><br>
+            <input type="text" id="end_date" name="end_date" placeholder="Ending Date"><br>
+
+            <label for="event_loaction">Location</label><br><br>
+            <input type="text" id="event_loaction" name="event_loaction" placeholder="Event Location"><br>
+
         </form>
-      </div>
+        <button type="submit" name="submit" id="submit">submit</button>
+            
     </div>
-  </body>
-</html>
+</main>
+</body>
 
+</html>
