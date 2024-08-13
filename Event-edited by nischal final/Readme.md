@@ -19,7 +19,7 @@ This README provides instructions for setting up the `khoj-db` MySQL database an
 3. In the "Create database" section, enter `khoj-db` as the database name.
 4. Click "Create" to create the database.
 
-### 2. Create the `users` Table
+### 2. Create the Tables
 
 1. Select the `khoj-db` database from the left sidebar.
 2. Click on the "SQL" tab to open the SQL query editor.
@@ -32,15 +32,15 @@ This README provides instructions for setting up the `khoj-db` MySQL database an
        `password` VARCHAR(255) NOT NULL
    );
    CREATE TABLE `events` (
-    `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    `name` VARCHAR(255) NOT NULL,
-    `description` TEXT NOT NULL,
-    `start_date` DATE NOT NULL,
-    `end_date` DATE NOT NULL,
-    `google_map_url` VARCHAR(255),
-    `image_path` VARCHAR(255),
-    `user_id` INT NOT NULL,
-    FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
+       `id` INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+       `name` VARCHAR(255) NOT NULL,
+       `description` TEXT NOT NULL,
+       `start_date` DATE NOT NULL,
+       `end_date` DATE NOT NULL,
+       `google_map_url` VARCHAR(255),
+       `image_path` VARCHAR(255),
+       `user_id` INT NOT NULL,
+       FOREIGN KEY (`user_id`) REFERENCES `users`(`id`)
     );
 
  
