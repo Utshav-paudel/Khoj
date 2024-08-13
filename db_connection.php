@@ -1,6 +1,6 @@
 <?php
 $host = 'localhost';
-$db   = 'event_app';
+$db   = 'khoj-db';
 $user = 'root';
 $pass = '';
 

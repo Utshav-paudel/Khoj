@@ -7,24 +7,18 @@ if (!isset($_SESSION['user_id'])) {
 
 require_once 'db_connection.php';
 
-$search = isset($_GET['search']) ? $_GET['search'] : '';
 $events = [];
+$search = isset($_GET['search']) ? trim($_GET['search']) : '';
 
-// Fetch all events by default
-$stmt = $conn->prepare("SELECT * FROM events");
-$stmt->execute();
-$result = $stmt->get_result();
-$events = $result->fetch_all(MYSQLI_ASSOC);
-
-// If search is performed, filter the results
-if ($search) {
-    $filtered_events = [];
-    foreach ($events as $event) {
-        if (stripos($event['name'], $search) !== false || stripos($event['description'], $search) !== false) {
-            $filtered_events[] = $event;
-        }
+if (!empty($search)) {
+    $stmt = $conn->prepare("SELECT * FROM events WHERE name LIKE ? OR description LIKE ?");
+    $search_term = '%' . $search . '%';
+    $stmt->bind_param("ss", $search_term, $search_term);
+    $stmt->execute();
+    $result = $stmt->get_result();
+    while ($row = $result->fetch_assoc()) {
+        $events[] = $row;
     }
-    $events = $filtered_events;
 }
 ?>
 <!DOCTYPE html>
@@ -32,34 +26,58 @@ if ($search) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Event List</title>
+    <title>Search Events</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
+    <style>
+        .btn-dashboard {
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            text-align: center;
+            margin-bottom: 20px;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .btn-dashboard:hover {
+            background-color: #0056b3;
+        }
+
+        .btn-dashboard:focus {
+            outline: none;
+        }
+    </style>
 </head>
 <body>
-    <div class="container mt-5">
-        <h2>Event List</h2>
+    <div class="container mt-4">
+        <a href="dashboard.php" class="btn-dashboard">Go to Dashboard</a>
+        <h2>Search Events</h2>
         <form action="search_event.php" method="get">
-            <div class="mb-3">
-                <input type="text" class="form-control" id="search" name="search" placeholder="Search for events..." value="<?php echo htmlspecialchars($search); ?>">
+            <div class="form-group">
+                <input type="text" class="form-control" name="search" placeholder="Search for events" value="<?php echo htmlspecialchars($search); ?>">
             </div>
             <button type="submit" class="btn btn-primary">Search</button>
         </form>
-        
-        <h3 class="mt-4">Events</h3>
-        <?php if (!empty($events)): ?>
-            <div class="list-group">
-                <?php foreach ($events as $event): ?>
-                    <a href="event_details.php?id=<?php echo $event['id']; ?>" class="list-group-item list-group-item-action">
-                        <?php echo htmlspecialchars($event['name']); ?>
-                    </a>
-                <?php endforeach; ?>
-            </div>
-        <?php else: ?>
-            <p class="mt-4">No events found.</p>
-        <?php endif; ?>
-        
-        <a href="dashboard.php" class="btn btn-secondary mt-3">Back to Dashboard</a>
+        <div class="mt-4">
+            <?php if (!empty($search) && $events): ?>
+                <ul class="list-group">
+                    <?php foreach ($events as $event): ?>
+                        <li class="list-group-item">
+                            <h5><?php echo htmlspecialchars($event['name']); ?></h5>
+                            <p><?php echo htmlspecialchars($event['description']); ?></p>
+                            <a href="event_details.php?id=<?php echo $event['id']; ?>" class="btn btn-secondary">View Details</a>
+                        </li>
+                    <?php endforeach; ?>
+                </ul>
+            <?php elseif (!empty($search)): ?>
+                <p>No events found.</p>
+            <?php endif; ?>
+        </div>
     </div>
-    <script src="js/bootstrap.min.js"></script>
 </body>
 </html>

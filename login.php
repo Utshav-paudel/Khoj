@@ -11,25 +11,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    if ($result->num_rows == 1) {
-        $user = $result->fetch_assoc();
+    if ($user = $result->fetch_assoc()) {
         if (password_verify($password, $user['password'])) {
             $_SESSION['user_id'] = $user['id'];
             header("Location: dashboard.php");
             exit();
         } else {
-            // Password is incorrect
-            header("Location: index.php?error=1&reason=incorrect_password");
+            header("Location: index.php?error=true&reason=incorrect_password");
             exit();
         }
     } else {
-        // Username not found
-        header("Location: index.php?error=1&reason=user_not_found");
+        header("Location: index.php?error=true&reason=user_not_found");
         exit();
     }
 } else {
-    // Invalid request method
-    header("Location: index.php?error=1&reason=invalid_request");
+    header("Location: index.php?error=true&reason=invalid_request");
     exit();
 }
 ?>
