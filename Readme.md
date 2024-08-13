@@ -46,4 +46,4 @@ This README provides instructions for setting up the `khoj-db` MySQL database an
  
 ## Demo of the webapp 
 
-![Sample image of ui](images\sample.png)
+![Sample image of ui](images/sample.png)
