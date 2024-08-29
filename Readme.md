@@ -1,3 +1,7 @@
+# Khoj : Webapp for Finding and registering Local events
+
+
+
 # Khoj-DB Setup Guide
 
 ## Introduction
